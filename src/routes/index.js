@@ -6,6 +6,7 @@ import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import ReduxExample from '../page/ReduxExample';
 import Login from '../page/Login';
+import PhotoSwiperTest from '../page/PhotoSwiperTest'
 
 
 const Routes = () => {
@@ -20,6 +21,7 @@ const Routes = () => {
         }} />
         <Route path="/test" component={ReduxExample} />
         <Route path="/login" component={Login} />
+        <Route path="/test1" component={PhotoSwiperTest} />
       </div>
     </Router>
   );
