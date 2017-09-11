@@ -47,7 +47,7 @@ export default class Previewer extends Component {
           img.onload = function () {
             item.w = img.width;
             item.h = img.height;
-            gallery.photoswipe.updateSize(true)
+            gallery.updateSize(true)
           }
           img.src = item.src
         }
@@ -73,7 +73,7 @@ export default class Previewer extends Component {
       init(index)
     }
     this.goTo = (index)=>{
-      gallery.photoswipe.goTo(index)
+      gallery.goTo(index)
     }
   }
 
@@ -131,6 +131,7 @@ export default class Previewer extends Component {
 
   componentWillReceiveProps(nextProps) {
     //图片列表更新
+    console.log(nextProps)
     this.setState({
       list: nextProps.imgList
     })
