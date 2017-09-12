@@ -132,9 +132,11 @@ export default class Previewer extends Component {
   componentWillReceiveProps(nextProps) {
     //图片列表更新
     console.log(nextProps)
-    this.setState({
-      list: nextProps.imgList
-    })
+    if(nextProps.imgList){
+      this.setState({
+        list: nextProps.imgList
+      })
+    }
   }
 }
 
