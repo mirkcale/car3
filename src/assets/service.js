@@ -6,6 +6,7 @@ import qs from 'qs'
 
 //设置全局axios配置
 axios.defaults.timeout = 60000
+axios.default.baseURL = 'http://114.215.27.185/t/icar/v1'
 axios.interceptors.response.use( response => {
   return response
 },error=>{
@@ -14,18 +15,20 @@ axios.interceptors.response.use( response => {
 });
 
 
-export function fetchLogo(companyId){
-  return axios.get('/compantId',qs.stringify({
-
+export function fetchCompanyConfig(companyId){
+  return axios.post('http://www.easy-mock.com/mock/59b79760e0dc663341a704ee/example/companyId',qs.stringify({
+    companyId: companyId
+  }),{
+    baseURL:''
   }).then(response=>{
     return response.data
   },respond=>{
     return respond
-  }))
+  })
 }
 
-export async function login(loginData) {
-  return await axios.post('http://114.215.27.185/t/icar/v1/guest/n02',qs.stringify(loginData)).then(response=>{
+export function login(loginData) {
+  return axios.post('/guest/n02',qs.stringify(loginData)).then(response=>{
     return response.data
   },respond=>{
     return respond
