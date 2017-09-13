@@ -14,5 +14,5 @@ const ItemPlaceHolder = props => (
     }}
     {...props}
   ></div>
-);
+)
 export default ItemPlaceHolder

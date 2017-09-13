@@ -1,0 +1,16 @@
+.croppr-btn {
+  position: fixed;
+  z-index: 666;
+  bottom: 60px;
+  left: 0;
+  span {
+    background: #fff;
+    position: fixed;
+    &:first-of-type{
+      left: 40px;
+    }
+    &:last-of-type{
+      right: 40px;
+    }
+  }
+}

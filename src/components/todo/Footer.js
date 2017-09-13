@@ -20,6 +20,6 @@ const Footer = () => (
       Completed
     </FilterLink>
   </p>
-);
+)
 
 export default Footer

@@ -11,7 +11,7 @@ const TodoList = ({ todos, onTodoClick }) => (
       <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />
     ))}
   </ul>
-);
+)
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(
@@ -22,6 +22,6 @@ TodoList.propTypes = {
     }).isRequired
   ).isRequired,
   onTodoClick: PropTypes.func.isRequired
-};
+}
 
 export default TodoList

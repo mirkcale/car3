@@ -6,8 +6,8 @@ import {createForm} from 'rc-form'
 import {List, InputItem} from 'antd-mobile'
 import Previewer from '../components/Previewer'
 import ItemPlaceHolder from '../components/ItemPlaceHolder'
-import {NavBar, Icon} from 'antd-mobile';
-import {login, fetchCompanyConfig} from '../assets/service';
+import {NavBar} from 'antd-mobile'
+import {login, fetchCompanyConfig} from '../assets/js/service'
 import md5 from 'md5'
 
 class LoginPage extends Component {
@@ -47,15 +47,15 @@ class LoginPage extends Component {
     if (value.replace(/\s/g, '').length < 11) {
       this.setState({
         hasError: true,
-      });
+      })
     } else {
       this.setState({
         hasError: false,
-      });
+      })
     }
     this.setState({
       value,
-    });
+    })
   }
   componentDidMount() {
     let urlId = this.props.location.serach

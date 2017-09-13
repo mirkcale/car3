@@ -5,7 +5,6 @@ import React, {Component} from 'react'
 import Previewer from '../components/Previewer'
 // import {createForm} from 'rc-form'
 import '../page/photoSwiperTest.less'
-import Cropper from 'cropperjs'
 
 class PhotoSwiperTest extends Component {
   constructor(props) {

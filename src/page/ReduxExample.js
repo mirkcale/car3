@@ -9,6 +9,6 @@ const ReduxExample = () => (
     <VisibleTodoList />
     <Footer />
   </div>
-);
+)
 
 export default ReduxExample

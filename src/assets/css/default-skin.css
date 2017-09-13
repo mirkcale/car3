@@ -18,8 +18,8 @@
  */
 /* <button> css reset */
 .pswp__button {
-  width: 88px;
-  height: 88px;
+  width: 176px;
+  height: 176px;
   position: relative;
   background: none;
   cursor: pointer;
@@ -52,9 +52,9 @@
 .pswp__button--arrow--left:before,
 .pswp__button--arrow--right:before {
   background: url(default-skin.png) 0 0 no-repeat;
-  background-size: 528px 176px;
-  width: 88px;
-  height: 88px; }
+  background-size: 1056px 352px;
+  width: 176px;
+  height: 176px; }
 
 @media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
   /* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
@@ -67,10 +67,10 @@
     background: none; } }
 
 .pswp__button--close {
-  background-position: 0 -88px; }
+  background-position: 0 -176px; }
 
 .pswp__button--share {
-  background-position: -88px -88px; }
+  background-position: -176px -176px; }
 
 .pswp__button--fs {
   display: none; }
@@ -79,17 +79,17 @@
   display: block; }
 
 .pswp--fs .pswp__button--fs {
-  background-position: -88px 0; }
+  background-position: -176px 0; }
 
 .pswp__button--zoom {
   display: none;
-  background-position: -176px 0; }
+  background-position: -352px 0; }
 
 .pswp--zoom-allowed .pswp__button--zoom {
   display: block; }
 
 .pswp--zoomed-in .pswp__button--zoom {
-  background-position: -264px 0; }
+  background-position: -528px 0; }
 
 /* no arrows on touch screens */
 .pswp--touch .pswp__button--arrow--left,
@@ -104,9 +104,9 @@
 .pswp__button--arrow--right {
   background: none;
   top: 50%;
-  margin-top: -100px;
-  width: 140px;
-  height: 200px;
+  margin-top: -200px;
+  width: 280px;
+  height: 400px;
   position: absolute; }
 
 .pswp__button--arrow--left {
@@ -118,19 +118,19 @@
 .pswp__button--arrow--left:before,
 .pswp__button--arrow--right:before {
   content: '';
-  top: 70px;
+  top: 140px;
   background-color: rgba(0, 0, 0, 0.3);
-  height: 60px;
-  width: 64px;
+  height: 120px;
+  width: 128px;
   position: absolute; }
 
 .pswp__button--arrow--left:before {
-  left: 12px;
-  background-position: -276px -88px; }
+  left: 24px;
+  background-position: -552px -176px; }
 
 .pswp__button--arrow--right:before {
-  right: 12px;
-  background-position: -188px -88px; }
+  right: 24px;
+  background-position: -376px -176px; }
 
 /*
 
@@ -151,7 +151,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  padding: 20px;
+  padding: 40px;
   position: absolute;
   z-index: 1600;
   opacity: 0;
@@ -167,35 +167,35 @@
   z-index: 1620;
   position: absolute;
   background: #FFF;
-  top: 112px;
-  border-radius: 4px;
+  top: 224px;
+  border-radius: 8px;
   display: block;
   width: auto;
-  right: 88px;
-  -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  -webkit-transform: translateY(12px);
-      -ms-transform: translateY(12px);
-          transform: translateY(12px);
+  right: 176px;
+  -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  -webkit-transform: translateY(24px);
+      -ms-transform: translateY(24px);
+          transform: translateY(24px);
   -webkit-transition: -webkit-transform 0.25s;
           transition: transform 0.25s;
   -webkit-backface-visibility: hidden;
   will-change: transform; }
   .pswp__share-tooltip a {
     display: block;
-    padding: 16px 24px;
+    padding: 32px 48px;
     color: #000;
     text-decoration: none;
-    font-size: 28px;
-    line-height: 36px; }
+    font-size: 56px;
+    line-height: 72px; }
     .pswp__share-tooltip a:hover {
       text-decoration: none;
       color: #000; }
     .pswp__share-tooltip a:first-child {
       /* round corners on the first/last list item */
-      border-radius: 4px 4px 0 0; }
+      border-radius: 8px 8px 0 0; }
     .pswp__share-tooltip a:last-child {
-      border-radius: 0 0 4px 4px; }
+      border-radius: 0 0 8px 8px; }
 
 .pswp__share-modal--fade-in {
   opacity: 1; }
@@ -206,7 +206,7 @@
 
 /* increase size of share links on touch devices */
 .pswp--touch .pswp__share-tooltip a {
-  padding: 32px 24px; }
+  padding: 64px 48px; }
 
 a.pswp__share--facebook:before {
   content: '';
@@ -214,9 +214,9 @@ a.pswp__share--facebook:before {
   width: 0;
   height: 0;
   position: absolute;
-  top: -24px;
-  right: 30px;
-  border: 12px solid transparent;
+  top: -48px;
+  right: 60px;
+  border: 24px solid transparent;
   border-bottom-color: #FFF;
   -webkit-pointer-events: none;
   -moz-pointer-events: none;
@@ -248,12 +248,12 @@ a.pswp__share--download:hover {
   position: absolute;
   left: 0;
   top: 0;
-  height: 88px;
-  font-size: 26px;
-  line-height: 88px;
+  height: 176px;
+  font-size: 52px;
+  line-height: 176px;
   color: #FFF;
   opacity: 0.75;
-  padding: 0 20px; }
+  padding: 0 40px; }
 
 /*
 	
@@ -265,18 +265,18 @@ a.pswp__share--download:hover {
   left: 0;
   bottom: 0;
   width: 100%;
-  min-height: 88px; }
+  min-height: 176px; }
   .pswp__caption small {
-    font-size: 22px;
+    font-size: 44px;
     color: #BBB; }
 
 .pswp__caption__center {
   text-align: left;
-  max-width: 840px;
+  max-width: 1680px;
   margin: 0 auto;
-  font-size: 26px;
-  padding: 20px;
-  line-height: 40px;
+  font-size: 52px;
+  padding: 40px;
+  line-height: 80px;
   color: #CCC; }
 
 .pswp__caption--empty {
@@ -294,12 +294,12 @@ a.pswp__share--download:hover {
 
  */
 .pswp__preloader {
-  width: 88px;
-  height: 88px;
+  width: 176px;
+  height: 176px;
   position: absolute;
   top: 0;
   left: 50%;
-  margin-left: -44px;
+  margin-left: -88px;
   opacity: 0;
   -webkit-transition: opacity 0.25s ease-out;
           transition: opacity 0.25s ease-out;
@@ -307,9 +307,9 @@ a.pswp__share--download:hover {
   direction: ltr; }
 
 .pswp__preloader__icn {
-  width: 40px;
-  height: 40px;
-  margin: 24px; }
+  width: 80px;
+  height: 80px;
+  margin: 48px; }
 
 .pswp__preloader--active {
   opacity: 1; }
@@ -329,11 +329,11 @@ a.pswp__share--download:hover {
 .pswp--css_animation .pswp__preloader__icn {
   background: none;
   opacity: 0.75;
-  width: 28px;
-  height: 28px;
+  width: 56px;
+  height: 56px;
   position: absolute;
-  left: 30px;
-  top: 30px;
+  left: 60px;
+  top: 60px;
   margin: 0; }
 
 .pswp--css_animation .pswp__preloader__cut {
@@ -342,16 +342,16 @@ a.pswp__share--download:hover {
 			 by Keanu Lee https://blog.keanulee.com/2014/10/20/the-tale-of-three-spinners.html
 		*/
   position: relative;
-  width: 14px;
-  height: 28px;
+  width: 28px;
+  height: 56px;
   overflow: hidden; }
 
 .pswp--css_animation .pswp__preloader__donut {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: 28px;
-  height: 28px;
-  border: 4px solid #FFF;
+  width: 56px;
+  height: 56px;
+  border: 8px solid #FFF;
   border-radius: 50%;
   border-left-color: transparent;
   border-bottom-color: transparent;
@@ -361,7 +361,7 @@ a.pswp__share--download:hover {
   background: none;
   margin: 0; }
 
-@media screen and (max-width: 2048px) {
+@media screen and (max-width: 4096px) {
   .pswp__preloader {
     position: relative;
     left: auto;
@@ -424,7 +424,7 @@ a.pswp__share--download:hover {
   position: absolute;
   left: 0;
   top: 0;
-  height: 88px;
+  height: 176px;
   width: 100%; }
 
 .pswp__caption,

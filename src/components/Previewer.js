@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
 
 export default class Previewer extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       list: this.props.imgList
     }
@@ -23,9 +23,9 @@ export default class Previewer extends Component {
 
   componentDidMount() {
     //
-    let gallery;
+    let gallery
     const _init = (index)=>{
-      let pswpElement = document.querySelectorAll('.pswp')[0];
+      let pswpElement = document.querySelectorAll('.pswp')[0]
 
       // build items array
       let items = this.state.list
@@ -38,16 +38,16 @@ export default class Previewer extends Component {
         shareEl: false,
         tapToClose: true,
         index: index
-      },this.props.options);
+      },this.props.options)
 
-      gallery = new PhotoSwipe( pswpElement, UI, items, options);
+      gallery = new PhotoSwipe( pswpElement, UI, items, options)
       gallery.listen('gettingData', function (index, item) {
         if(!item.w || !item.h || item.w < 1 || item.h < 1) {
-          const img = new Image();
+          const img = new Image()
           img.onload = function () {
-            item.w = img.width;
-            item.h = img.height;
-            gallery.invalidateCurrItems();
+            item.w = img.width
+            item.h = img.height
+            gallery.invalidateCurrItems()
             gallery.updateSize(true)
           }
           img.src = item.src
