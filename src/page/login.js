@@ -58,6 +58,7 @@ class LoginPage extends Component {
     });
   }
   componentDidMount() {
+    let urlId = this.props.location.serach
     let getLogoUrl = async(companyId)=> {
       let logo = await fetchCompanyConfig(companyId)
       console.log(logo.data.url)
@@ -67,7 +68,7 @@ class LoginPage extends Component {
         })
       },6000)
     }
-    getLogoUrl('109')
+    getLogoUrl(urlId)
 
   }
 
@@ -76,14 +77,14 @@ class LoginPage extends Component {
     let submit = async()=> {
       console.log(getFieldValue('mobile'), getFieldValue('password'))
       const result = await login({
-        user: getFieldValue('mobile'),
+        user: getFieldValue('mobile').replace(/\s/g,''),
         pwd: md5(getFieldValue('password')),
         is: 1,
         agentCode: ''
       })
       console.log(result)
       if (result.r) {
-        this.props.history.push('/index')
+        this.props.history.push('/index?a=sad')
       }
     }
     return (

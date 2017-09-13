@@ -47,6 +47,7 @@ export default class Previewer extends Component {
           img.onload = function () {
             item.w = img.width;
             item.h = img.height;
+            gallery.invalidateCurrItems();
             gallery.updateSize(true)
           }
           img.src = item.src

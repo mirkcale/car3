@@ -1,7 +1,7 @@
 /**
  * Created by lyy on 2017/9/12.
  */
-import React, {Component} from 'react'
+import React from 'react'
 const ItemPlaceHolder = props => (
   <div
     style={{
@@ -10,7 +10,7 @@ const ItemPlaceHolder = props => (
       textAlign: 'center',
       height: props['height'],
       lineHeight: '0.6rem',
-      width: '100%',
+      width: props['width'] || '100%',
     }}
     {...props}
   ></div>
