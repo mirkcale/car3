@@ -1,10 +1,14 @@
 /**
  * Created by lyy on 2017/9/13.
  */
+/* eslint-disable */
 import React from 'react'
 import Cropper from 'react-cropper'
 import '../assets/css/cropper.css'
 import './imgUpload.scss'
+import SubHeader from  '../components/SubHeader'
+import Previewer from '../components/Previewer'
+import {compress} from '../assets/js/compress'
 
 
 export default class ImgUpload extends React.Component {
@@ -14,7 +18,22 @@ export default class ImgUpload extends React.Component {
       imageOrigin: './hotmei.jpg',
       height: '',
       croppering: true,
-      croppedBase64: ''
+      imgList: [],
+      options: {
+        getThumbBoundsFn (index) {
+          // find thumbnail element
+          let thumbnail = document.querySelectorAll('img')[index]
+          // get window scroll Y
+          let pageYScroll = window.pageYOffset || document.documentElement.scrollTop
+          // optionally get horizontal scroll
+          // get position of element relative to viewport
+          let rect = thumbnail.getBoundingClientRect()
+          // w = width
+          return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
+          // Good guide on how to get element coordinates:
+          // http://javascript.info/tutorial/coordinates
+        }
+      }
     }
   }
 
@@ -34,18 +53,49 @@ export default class ImgUpload extends React.Component {
     }
     this._cropper = () => {
       const cropperBase64 = this.refs.cropper.getCroppedCanvas().toDataURL()
-      this.setState({
-        croppedBase64: cropperBase64,
-        croppering: false
-      })
+      let img = new Image()
+      const _this = this
+      img.src = cropperBase64
+      let compressData ={
+        src: '',
+        w: 0,
+        h: 0
+      }
+      let origin = ''
+      if (img.complete) {
+        origin = compress(img)
+        compressData.src = origin.base64
+        compressData.w = origin.width
+        compressData.h = origin.height
+        this.state.imgList[0] = compressData
+        this.setState({
+          imgList: this.state.imgList,
+          croppering: false
+        })
+      } else {
+        img.onload = (function () {
+          origin = compress(img)
+          compressData.src = origin.base64
+          compressData.w = origin.width
+          compressData.h = origin.height
+          _this.state.imgList[0] = compressData
+          _this.setState({
+            imgList: _this.state.imgList,
+            croppering: false
+          })
+        });
+      }
     }
     this.takePhoto = () => {
       console.log('重新拍照')
     }
-    this.showCropper = ()=>{
+    this.showCropper = ()=> {
       this.setState({
         croppering: true
       })
+    }
+    this.showPreview = (index)=> {
+      this.refs.preview.show(index)
     }
   }
 
@@ -73,8 +123,11 @@ export default class ImgUpload extends React.Component {
               </div>
             </div> :
             <div>
-              <img width="100%" src={this.state.croppedBase64} alt=""/>
+              <SubHeader current="2"/>
+              <p onClick={() => this.showPreview(0)}>{JSON.stringify(this.state.imgList[0])}</p>
+              <img width="100%" src={this.state.imgList[0].src} onClick={()=>{this.showPreview(0)}} alt=""/>
               <p onClick={this.showCropper}>车辆识别</p>
+              <Previewer ref="preview" options={this.state.options} imgList={this.state.imgList}/>
             </div>
         }
       </div>
