@@ -14,7 +14,6 @@ export function compress(img) {
   //    瓦片canvas
   var tCanvas = document.createElement("canvas");
   var tctx = tCanvas.getContext("2d");
-  var maxsize = 80 * 60;
   var initSize = img.src.length;
   var width = img.width;
   var height = img.height;

@@ -1,0 +1,17 @@
+@import "../theme/default";
+.am-picker-popup-item{
+  color: $primaryColor;
+}
+.am-list-item .am-list-thumb:first-child{
+  margin-right: 10px;
+}
+.am-checkbox.am-checkbox-checked .am-checkbox-inner{
+  border-color: $primaryColor;
+}
+.am-checkbox.am-checkbox-checked .am-checkbox-inner:after{
+  border-color: $primaryColor;
+}
+.choose-insure_list{
+  display: flex;
+  justify-content: space-between;
+}

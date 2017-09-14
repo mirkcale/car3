@@ -66,7 +66,7 @@ class LoginPage extends Component {
         this.setState({
           companyLogo: logo.data.url
         })
-      },6000)
+      },1000)
     }
     getLogoUrl(urlId)
 
@@ -95,7 +95,7 @@ class LoginPage extends Component {
           mode="light"
         >登录</NavBar>
         <div>
-          {this.state.companyLogo ? <img src={this.state.companyLogo} width="640" /> : <ItemPlaceHolder height="600px"/> }
+          {this.state.companyLogo ? <img src={this.state.companyLogo} width="100%" alt="logo" /> : <ItemPlaceHolder height="600px"/> }
         </div>
         <List>
           <InputItem

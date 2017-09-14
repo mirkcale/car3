@@ -200,7 +200,7 @@ module.exports = {
             loader: 'svg-sprite-loader',
             include: [
               require.resolve('antd-mobile').replace(/warn\.js$/, ''),  // 1. svg files of antd-mobile
-              // path.resolve(__dirname, '../src/'),  // folder of svg files in your project
+              path.resolve(__dirname, '../src/assets/'),  // folder of svg files in your project
             ]
           },
           {
@@ -263,7 +263,7 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.less$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.less$/, /\.svg/],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]',

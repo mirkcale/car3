@@ -2,10 +2,11 @@
  * Created by admin on 2017/9/5.
  */
 import React from 'react'
-// import { Router, Route } from 'react-router'
 import {HashRouter as Router, Route} from 'react-router-dom'
-import ReduxExample from '../page/ReduxExample'
 import Login from '../page/Login'
+import ChooseInsure from '../page/ChooseInsure'
+
+import ReduxExample from '../page/ReduxExample'
 import PhotoSwiperTest from '../page/PhotoSwiperTest'
 import ImgUpload from '../page/ImgUpload'
 
@@ -22,6 +23,7 @@ const Routes = () => {
         }} />
         <Route path="/test" component={ReduxExample} />
         <Route path="/login" component={Login} />
+        <Route path="/chooseInsure" component={ChooseInsure} />
         <Route path="/test1" component={PhotoSwiperTest} />
         <Route path="/imgUpload" component={ImgUpload} />
       </div>

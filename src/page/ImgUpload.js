@@ -17,8 +17,12 @@ export default class ImgUpload extends React.Component {
     this.state = {
       imageOrigin: './hotmei.jpg',
       height: '',
-      croppering: true,
-      imgList: [],
+      croppering: false,
+      imgList: [
+        {
+          src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505369820827&di=73dd2fa4ad9800c4f0a9a04ddf653926&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20160719%2F10c5273ba9644ee8990c9aad9b6e3537_th.jpg'
+        }
+      ],
       options: {
         getThumbBoundsFn (index) {
           // find thumbnail element
@@ -123,8 +127,7 @@ export default class ImgUpload extends React.Component {
               </div>
             </div> :
             <div>
-              <SubHeader current="2"/>
-              <p onClick={() => this.showPreview(0)}>{JSON.stringify(this.state.imgList[0])}</p>
+              <SubHeader carLicence="京a123" carOwner="龙傲天" current="4"/>
               <img width="100%" src={this.state.imgList[0].src} onClick={()=>{this.showPreview(0)}} alt=""/>
               <p onClick={this.showCropper}>车辆识别</p>
               <Previewer ref="preview" options={this.state.options} imgList={this.state.imgList}/>

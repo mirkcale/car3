@@ -1,0 +1,31 @@
+@import "../theme/default";
+.am-steps-item.am-steps-status-finish .am-steps-tail > i{
+  background-color: $primaryColor;
+}
+.am-steps-item.am-steps-status-finish .am-steps-head-inner > .am-steps-icon{
+  color: $primaryColor;
+}
+.am-steps-item.am-steps-status-finish .am-steps-title{
+  color: $primaryColor;
+}
+.am-steps-item.am-steps-status-wait .am-steps-title{
+  color: #bfbfbf;
+}
+.am-steps-tail{
+  padding-right: 0 !important;
+}
+.am-steps-title{
+  font-size: 26px;
+}
+.sub-header_root{
+  background-color: #fff;
+  padding: 29px 0 23px;
+  .sub-header_top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 29px;
+    font-size: 32px;
+    color: $inputColor;
+    font-weight: 600;
+  }
+}

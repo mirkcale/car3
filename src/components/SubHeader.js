@@ -2,24 +2,39 @@
  * Created by lyy on 2017/9/13.
  */
 import React from 'react'
-import {Steps, Icon} from 'antd-mobile'
+import {WingBlank, Steps, Icon} from 'antd-mobile'
+import './subHeader.scss'
 
 
 export default (props)=> {
   const Step = Steps.Step
 
   const steps = [{
-    title: 'Finished',
-    description: 'This is description',
+    title: '录入信息',
+    description: '',
   }, {
-    title: 'In Progress',
-    description: 'This is description',
+    title: '选择险种',
+    description: '',
   }, {
-    title: 'Waiting',
-    description: 'This is description',
+    title: '报价',
+    description: '',
+  }, {
+    title: '核保',
+    description: '',
+  }, {
+    title: '支付',
+    description: '',
   }].map((s, i) => <Step key={i} title={s.title} description={s.description} />)
 
   return (
-    <Steps {...props} direction="horizontal">{steps}</Steps>
+    <div className="sub-header_root">
+      <WingBlank>
+        <div className="sub-header_top">
+          <span className="license">{props.carLicence}</span>
+          <span className="owner">{props.carOwner}</span>
+        </div>
+        <Steps current={props.current} direction="horizontal">{steps}</Steps>
+      </WingBlank>
+    </div>
   )
 }
