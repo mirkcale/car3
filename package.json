@@ -112,5 +112,19 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "proxy": {
+    "/auth": {
+      "target": "http://114.215.27.185/t/icar/v1/auth/",
+      "pathRewrite": {
+        "^/auth": ""
+      }
+    },
+    "/guest": {
+      "target": "http://114.215.27.185/t/icar/v1/guest/",
+      "pathRewrite": {
+        "^/guest": ""
+      }
+    }
   }
 }
