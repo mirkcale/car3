@@ -20,8 +20,8 @@ export function compress(img) {
   var maxWidth = 800;
 
   //如果图片大于四百万像素，计算压缩比并将大小压至400万以下
-  var ratio;
-  if ((ratio = width * height / 4000000) > 1) {
+  var ratio = width * height / 4000000
+  if (ratio > 1) {
     ratio = Math.sqrt(ratio);
     width /= ratio;
     height /= ratio;
@@ -30,8 +30,8 @@ export function compress(img) {
   }
 
 
-  var wRatio;
-  if ((wRatio = width / maxWidth ) > 1) {
+  var wRatio =  width / maxWidth
+  if (wRatio > 1) {
     width = maxWidth;
     height /= wRatio;
   }
@@ -43,8 +43,8 @@ export function compress(img) {
   ctx.fillStyle = "#fff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   //如果图片像素大于100万则使用瓦片绘制
-  var count;
-  if ((count = width * height / 2000000) > 1) {
+  var count = width * height / 2000000
+  if (count > 1) {
     count = ~~(Math.sqrt(count) + 1); //计算要分成多少块瓦片
 //            计算每块瓦片的宽和高
     var nw = ~~(width / count);
@@ -84,7 +84,7 @@ function getBlob(buffer, format) {
   try {
     return new Blob(buffer, {type: format});
   } catch (e) {
-    var bb = new (window.BlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder);
+    var bb = new (window.BlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder)();
     buffer.forEach(function (buf) {
       bb.append(buf);
     });

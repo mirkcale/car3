@@ -6,7 +6,8 @@ import qs from 'qs'
 
 //设置全局axios配置
 axios.defaults.timeout = 60000
-axios.defaults.baseURL = 'http://114.215.27.185/t/icar/v1'
+axios.defaults.baseURL = process.env.NODE_ENV === "production" ?
+    '//gofingers.com/t/icar/v1/' : ''
 axios.interceptors.response.use( response => {
   return response
 },error=>{
