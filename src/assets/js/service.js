@@ -33,3 +33,11 @@ export function login(loginData) {
     return respond
   })
 }
+
+export function fetchCarInfo(car) {
+  return axios.post('auth/j01',qs.stringify(car)).then(response=>{
+    return response.data
+  },respond=>{
+    return respond
+  })
+}

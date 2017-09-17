@@ -2,15 +2,17 @@
  * Created by lyy on 2017/9/14.
  */
 import React from 'react'
-import { DatePicker, List, Icon, Switch, WhiteSpace, Picker } from 'antd-mobile'
+import { DatePicker, List, Icon, Switch, WhiteSpace, Picker, Modal } from 'antd-mobile'
 import { createForm } from 'rc-form'
 import moment from 'moment'
 import classnames from 'classnames'
 import './chooseInsure.scss'
+import { fetchCarInfo } from '../assets/js/service'
 
 const maxDate = moment('2016-12-03', 'YYYY-MM-DD').utcOffset(8)
 const minDate = moment('2015-08-06', 'YYYY-MM-DD').utcOffset(8)
 const Item = List.Item
+const alert = Modal.alert
 
 class ChooseInsure extends React.Component {
   constructor(props) {
@@ -42,6 +44,7 @@ class ChooseInsure extends React.Component {
         a6: true,
         b6: true,
         c6: '123',
+        d6: '国产',
         a7: true,
         b7: true,
         c7: '123',
@@ -78,15 +81,16 @@ class ChooseInsure extends React.Component {
   }
 
   submit = ()=> {
-    const { getFieldValue } = this.props.form
+    const { getFieldValue, getFieldsValue } = this.props.form
     console.log(moment(getFieldValue('forceStartDate')).format("YYYY-MM-DD"))
     console.log('a0=' + getFieldValue('a0'))
     // console.log(getFieldValue('forceSwitch'))
   }
 
-  showInsureInfo = (e)=> {
+  showInsureInfo = (e,name )=> {
     e.preventDefault()
     //showIntroduce
+    window.alert(name)
   }
 
   showInsureConfirm = (name)=> {
@@ -257,20 +261,37 @@ class ChooseInsure extends React.Component {
       },
     ]
     const onInsureClicked = (name)=> {
+      console.log( name, getFieldValue(name) )
       if ( /a/.test(name) && !/6|7|8|10/.test(name.slice(1)) ) {
         setFieldsValue({
           ['b' + name.slice(1)]: !getFieldValue(name)
         })
       }
 
-      if ( /b/.test(name) && getFieldValue(name) && !getFieldValue('a' + name.slice(1)) ) {
+      if ( /b/.test(name) && !getFieldValue(name) && !getFieldValue('a' + name.slice(1)) ) {
         setFieldsValue({
-          ['a' + name.slice(1)]: getFieldValue(name)
+          ['a' + name.slice(1)]: !getFieldValue(name)
         })
       }
 
-      if ( ~~name.slice(1) >= 5 && !getFieldValue('a0') && getFieldValue(name) ) {
-        alert('弹出确认框')
+      if ( ~~name.slice(1) >= 5 && !getFieldValue('a0') && !getFieldValue(name) ) {
+        ((name) => alert('此险种需要选择车损险', '是否选择', [
+          { text: '取消', onPress: () => {
+            setFieldsValue({
+              ['a'+name.slice(1)]: false
+            })
+            if(!/6|7|8|10/.test(name.slice(1))){
+              setFieldsValue({
+                ['b'+name.slice(1)]: false
+              })
+            }
+
+          }},
+          { text: '确定', onPress: () => setFieldsValue({
+            a0: true,
+            b0: true,
+          }) },
+        ]))(name)
       }
 
       if ( name === 'a0' && getFieldValue('a0') ) {
@@ -385,7 +406,7 @@ class ChooseInsure extends React.Component {
                   size="xxs"
                   color="#ffa632"
                   className="info-icon"
-                  onClick={this.showInsureInfo}
+                  onClick={(event)=>{this.showInsureInfo(event,'a0')}}
                 />
               </label>
               <div>
