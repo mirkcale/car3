@@ -5,6 +5,8 @@ import React from 'react'
 import {HashRouter as Router, Route} from 'react-router-dom'
 import Login from '../page/Login'
 import ChooseInsure from '../page/ChooseInsure'
+import Register from '../page/Register'
+import Index from '../page/Index'
 
 import ReduxExample from '../page/ReduxExample'
 import PhotoSwiperTest from '../page/PhotoSwiperTest'
@@ -18,12 +20,11 @@ const Routes = () => {
   return (
     <Router>
       <div>
-        <Route path="/index" component={()=>{
-          return <div>123</div>
-        }} />
-        <Route path="/test" component={ReduxExample} />
+        <Route path="/index" component={Index} />
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/chooseInsure" component={ChooseInsure} />
+        <Route path="/test" component={ReduxExample} />
         <Route path="/test1" component={PhotoSwiperTest} />
         <Route path="/imgUpload" component={ImgUpload} />
       </div>

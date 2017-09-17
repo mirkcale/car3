@@ -1,0 +1,13 @@
+@import "../theme/default";
+.user-fnc{
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    span{
+        color: $primary-color;
+    }
+}
+body.login-page{
+    background-color: #fff;
+}

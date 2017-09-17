@@ -1,0 +1,32 @@
+@import "../theme/default";
+.register{
+    .code-input{
+        border: 0;
+        flex: 1;
+        width: calc(100% - 200px);
+        &::-webkit-input-placeholder{
+            color: $input-placeholder;
+        }
+    }
+    .auth-code{
+        position: absolute;
+        right: 30px;
+        top: 9px;
+        display: inline-block;
+        padding: 0 20px;
+        width: 160px;
+        height: 70px;
+        text-align: center;
+        font-size: 28px;
+        line-height: 70px;
+        border-radius: 35px;
+        color: #fff;
+        background-color: $primary-color;
+    }
+    .agree-ment{
+        line-height: 88px;
+        svg{
+            vertical-align: middle;
+        }
+    }
+}

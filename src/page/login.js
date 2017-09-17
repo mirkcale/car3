@@ -1,14 +1,16 @@
 /**
  * Created by admin on 2017/9/7.
  */
-import React, {Component} from 'react'
-import {createForm} from 'rc-form'
-import {List, InputItem} from 'antd-mobile'
+import React, { Component } from 'react'
+import { createForm } from 'rc-form'
+import { List, InputItem, Icon } from 'antd-mobile'
 import Previewer from '../components/Previewer'
 import ItemPlaceHolder from '../components/ItemPlaceHolder'
-import {NavBar} from 'antd-mobile'
-import {login, fetchCompanyConfig} from '../assets/js/service'
+import { NavBar } from 'antd-mobile'
+import { login, fetchCompanyConfig } from '../assets/js/service'
 import md5 from 'md5'
+import '../assets/css/common.scss'
+import './login.scss'
 
 class LoginPage extends Component {
   state = {
@@ -34,7 +36,7 @@ class LoginPage extends Component {
         // get position of element relative to viewport
         let rect = thumbnail.getBoundingClientRect()
         // w = width
-        return {x: rect.left, y: rect.top + pageYScroll, w: rect.width}
+        return { x: rect.left, y: rect.top + pageYScroll, w: rect.width }
         // Good guide on how to get element coordinates:
         // http://javascript.info/tutorial/coordinates
       }
@@ -44,7 +46,7 @@ class LoginPage extends Component {
   };
 
   onChange = (value) => {
-    if (value.replace(/\s/g, '').length < 11) {
+    if ( value.replace(/\s/g, '').length < 11 ) {
       this.setState({
         hasError: true,
       })
@@ -57,64 +59,73 @@ class LoginPage extends Component {
       value,
     })
   }
+
   componentDidMount() {
     let urlId = this.props.location.serach
     let getLogoUrl = async(companyId)=> {
       let logo = await fetchCompanyConfig(companyId)
       console.log(logo.data.url)
-      setTimeout(()=>{
+      setTimeout(()=> {
         this.setState({
           companyLogo: logo.data.url
         })
-      },1000)
+      }, 1000)
     }
     getLogoUrl(urlId)
+    const body = document.getElementsByTagName('body')[0]
+    body.className = 'login-page'
 
   }
 
+  componentWillUnmount() {
+    const body = document.getElementsByTagName('body')[0]
+    body.className = ''
+  }
+
   render() {
-    const {getFieldProps, getFieldValue} = this.props.form
+    const { getFieldProps, getFieldValue } = this.props.form
     let submit = async()=> {
       console.log(getFieldValue('mobile'), getFieldValue('password'))
       const result = await login({
-        user: getFieldValue('mobile').replace(/\s/g,''),
+        user: getFieldValue('mobile').replace(/\s/g, ''),
         pwd: md5(getFieldValue('password')),
         is: 1,
         agentCode: ''
       })
       console.log(result)
-      if (result.r) {
+      if ( result.r ) {
         this.props.history.push('/index?a=sad')
       }
     }
     return (
-      <div>
-        <NavBar
-          leftContent=""
-          iconName={false}
-          mode="light"
-        >登录</NavBar>
+      <div className="login-page">
         <div>
-          {this.state.companyLogo ? <img src={this.state.companyLogo} width="100%" alt="logo" /> : <ItemPlaceHolder height="600px"/> }
+          {this.state.companyLogo ? <img src={this.state.companyLogo} width="100%" alt="logo"/> :
+            <ItemPlaceHolder height="600px"/> }
         </div>
         <List>
           <InputItem
             {...getFieldProps('mobile')}
             clear
-            type="phone"
             placeholder="请输入11位手机号码"
+            type="phone"
             autoFocus
-          >手机号</InputItem>
+          >
+            <div
+              style={{ backgroundImage: 'url(https://zos.alipayobjects.com/rmsportal/DfkJHaJGgMghpXdqNaKF.png)', backgroundSize: 'cover', height: '0.44rem', width: '0.44rem' }}></div>
+          </InputItem>
           <InputItem
             {...getFieldProps('password')}
             clear
             type="password"
             placeholder="请输入您的密码"
-          >密码</InputItem>
+          >
+            <Icon type={require('../assets/svg/items_intro.svg')}/>
+          </InputItem>
         </List>
         <Previewer ref="preview" options={this.state.options} imgList={this.state.list}/>
-        <button onClick={()=>{ submit()}}>登录</button>
-        <div><span>快速注册</span><span>找回密码</span></div>
+        <div onClick={()=>{ submit()}} className="next-button" style={{'margin': '66px auto 28px'}}>登录</div>
+        <div className="user-fnc"><span>快速注册</span><span>忘记密码?</span></div>
       </div>
     )
   }

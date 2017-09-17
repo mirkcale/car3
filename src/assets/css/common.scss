@@ -1,4 +1,26 @@
 @import "../../theme/default";
 body{
-  background-color: $backgroundColor;
+  background-color: $background-color;
+}
+.next-button{
+  margin: 0 auto;
+  width: 85%;
+  border-radius: 43px;
+  height: 85px;
+  line-height: 85px;
+  text-align: center;
+  font-size: 32px;
+  background-color: $primary-color;
+  color: #fff;
+  box-shadow: 0 0 0 $primary-color,
+  0 0 0 $primary-color,
+  0 0 0 $primary-color,
+  0 10px 20px rgba(239,0,7,.48);
+  &:active{
+    color: #fff;
+  }
+}
+.header-title{
+  font-size: 36px;
+  color: $primary-color;
 }

@@ -1,12 +1,12 @@
 @import "../theme/default";
 .am-steps-item.am-steps-status-finish .am-steps-tail > i{
-  background-color: $primaryColor;
+  background-color:$inputItem-color;
 }
 .am-steps-item.am-steps-status-finish .am-steps-head-inner > .am-steps-icon{
-  color: $primaryColor;
+  color:$inputItem-color;
 }
 .am-steps-item.am-steps-status-finish .am-steps-title{
-  color: $primaryColor;
+  color:$inputItem-color;
 }
 .am-steps-item.am-steps-status-wait .am-steps-title{
   color: #bfbfbf;
@@ -25,7 +25,7 @@
     justify-content: space-between;
     margin-bottom: 29px;
     font-size: 32px;
-    color: $inputColor;
+    color: $input-color;
     font-weight: 600;
   }
 }

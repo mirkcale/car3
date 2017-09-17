@@ -1,15 +1,15 @@
 @import "../theme/default";
 .am-picker-popup-item{
-  color: $primaryColor;
+  color: $inputItem-color;
 }
 .am-list-item .am-list-thumb:first-child{
   margin-right: 10px;
 }
 .am-checkbox.am-checkbox-checked .am-checkbox-inner{
-  border-color: $primaryColor;
+  border-color: $inputItem-color;
 }
 .am-checkbox.am-checkbox-checked .am-checkbox-inner:after{
-  border-color: $primaryColor;
+  border-color: $inputItem-color;
 }
 
 .choose-insure_list{
@@ -42,7 +42,7 @@
       top: 3px;
       width: 35px;
       height: 35px;
-      border: 1px solid $inputItemColor;
+      border: 1px solid $inputItem-color;
       border-radius: 18px;
     }
   }
@@ -57,12 +57,12 @@
     display: inline-block;
     width: 118px;
     height: 40px;
-    border: 1px solid $inputItemColor;
-    color: $inputItemColor;
+    border: 1px solid $inputItem-color;
+    color: $inputItem-color;
     font-size: 28px;
     &.checked{
-      border: 1px solid $primaryColor;
-      color: $primaryColor;
+      border: 1px solid $inputItem-color;
+      color: $inputItem-color;
     }
   }
 }
