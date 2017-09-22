@@ -53,7 +53,7 @@
     }
     .check-new{
         display: flex;
-        margin: 20px auto;
+        margin: 20px auto 110px;
         align-items: center;
         width: 80%;
         justify-content: space-between;
@@ -61,5 +61,14 @@
         svg{
             vertical-align: middle;
         }
+    }
+    .homepage-content{
+        position: absolute;
+        top: 90px;
+        left: 0;
+        bottom: 100px;
+        overflow-y: auto;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
     }
 }

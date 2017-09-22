@@ -4,6 +4,7 @@
 import React from 'react'
 import { createForm } from 'rc-form'
 import { Carousel, NavBar, Icon, TabBar, List, Switch } from 'antd-mobile'
+import HomePage from '../components/HomePage'
 import './index.scss'
 
 class Index extends React.Component {
@@ -23,8 +24,6 @@ class Index extends React.Component {
   }
 
   render() {
-    const hProp = this.state.initialHeight ? { height: this.state.initialHeight } : {}
-    const { getFieldProps, getFieldValue, setFieldsValue } = this.props.form
     return (
       <div className="index-page">
         <NavBar
@@ -34,54 +33,6 @@ class Index extends React.Component {
           onLeftClick={() => console.log('onLeftClick')}
           rightContent={<Icon type="check" color="#da3a3f" onClick={()=>{alert('查看消息') }} />}
         ><span className="header-title">车险</span></NavBar>
-        <Carousel
-          className="my-carousel"
-          autoplay={true}
-          infinite
-          swipeSpeed={35}
-        >
-          {this.state.bannerData.map(ii => (
-            <a href="http://www.baidu.com" key={ii} style={hProp}>
-              <img
-                width="100%"
-                src={`https://zos.alipayobjects.com/rmsportal/${ii || 'QcWDkUhvYIVEcvtosxMF'}.png`}
-                alt="icon"
-                onLoad={() => {
-                  // fire window resize event to change height
-                  window.dispatchEvent(new Event('resize'));
-                  this.setState({
-                    initialHeight: null,
-                  });
-                }}
-              />
-            </a>
-          ))}
-        </Carousel>
-        <div className="use-tips">目前仅支持9座以下非营私家车</div>
-        <div className="car-number_wrap">
-          <span className="province">粤 <Icon type="down" color="#fff" size="xxs"/></span>
-          <input type="text" placeholder="请输入车牌"/>
-          {
-            this.state.clearButtonShow ?
-              <Icon className="clear-icon" type="cross-circle"/> :
-              ''
-          }
-          <Icon className="camera-icon" type="cross"/>
-        </div>
-        <div className="check-new">
-            <span>
-              未上牌
-            <Switch
-              style={{marginLeft: '10px'}}
-              {...getFieldProps('Switch2', {
-                initialValue: false,
-                valuePropName: 'checked',
-              })}
-              onClick={(checked) => { console.log(checked); }}
-              platform="ios"
-            /></span>
-          <span>最近询价 <Icon type="right"/></span>
-        </div>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
@@ -111,6 +62,7 @@ class Index extends React.Component {
           }}
             data-seed="logId"
           >
+            <HomePage bannerData={this.state.bannerData} />
           </TabBar.Item>
           <TabBar.Item
             icon={<Icon type="koubei-o" size="md" />}

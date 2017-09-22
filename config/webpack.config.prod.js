@@ -12,6 +12,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const pxtorem = require('postcss-pxtorem');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -150,6 +151,13 @@ module.exports = {
             loader: require.resolve('babel-loader'),
             options: {
               compact: true,
+              plugins: [
+                ['import', { libraryName: 'antd-mobile', style: true }],
+              ],
+              // This is a feature of `babel-loader` for webpack (not Babel itself).
+              // It enables caching results in ./node_modules/.cache/babel-loader/
+              // directory for faster rebuilds.
+              cacheDirectory: true,
             },
           },
           // The notation here is somewhat confusing.
@@ -206,6 +214,64 @@ module.exports = {
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
+          {
+            test: /\.(svg)$/i,
+            loader: 'svg-sprite-loader',
+            include: [
+              require.resolve('antd-mobile').replace(/warn\.js$/, ''),  // 1. svg files of antd-mobile
+              path.resolve(__dirname, '../src/assets/'),  // folder of svg files in your project
+            ]
+          },
+          {
+            test: /\.less$/,
+            use: [
+              require.resolve('style-loader'),
+              require.resolve('css-loader'),
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                  plugins: () => [
+                    autoprefixer({
+                      browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
+                    }),
+                    pxtorem({ rootValue: 100, propWhiteList: [] })
+                  ],
+                },
+              },
+              {
+                loader: require.resolve('less-loader'),
+                options: {
+                  modifyVars: { "@primary-color": "#1DA57A" },
+                },
+              },
+            ],
+          },
+          {
+            test: /\.scss/,
+            use: [
+              require.resolve('style-loader'),
+              require.resolve('css-loader'),
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                  plugins: () => [
+                    autoprefixer({
+                      browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
+                    }),
+                    pxtorem({ rootValue: 100, propWhiteList: [] })
+                  ],
+                },
+              },
+              {
+                loader: require.resolve('sass-loader'),
+                options: {
+                  modifyVars: { "@primary-color": "#1DA57A" },
+                },
+              },
+            ],
+          },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
           // This loader don't uses a "test" so it will catch all modules
@@ -216,7 +282,7 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.less$/, /\.svg/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },

@@ -7,6 +7,7 @@ import Login from '../page/Login'
 import ChooseInsure from '../page/ChooseInsure'
 import Register from '../page/Register'
 import Index from '../page/Index'
+import EnterInfo from '../page/EnterInfo'
 
 import ReduxExample from '../page/ReduxExample'
 import PhotoSwiperTest from '../page/PhotoSwiperTest'
@@ -24,6 +25,7 @@ const Routes = () => {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/chooseInsure" component={ChooseInsure} />
+        <Route path="/enterInfo" component={EnterInfo} />
         <Route path="/test" component={ReduxExample} />
         <Route path="/test1" component={PhotoSwiperTest} />
         <Route path="/imgUpload" component={ImgUpload} />
