@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { createForm } from 'rc-form'
-import { Carousel, NavBar, Icon, TabBar, List, Switch } from 'antd-mobile'
+import { NavBar, Icon, TabBar } from 'antd-mobile'
 import HomePage from '../components/HomePage'
 import './index.scss'
 

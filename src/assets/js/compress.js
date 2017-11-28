@@ -95,7 +95,7 @@ function getBlob(buffer, format) {
 /**
  * 获取formdata
  */
-function getFormData() {
+export function getFormData() {
   var isNeedShim = ~navigator.userAgent.indexOf('Android')
     && ~navigator.vendor.indexOf('Google')
     && !~navigator.userAgent.indexOf('Chrome')
@@ -158,7 +158,7 @@ function FormDataShim() {
  * @param type 转换类型 图片类型
  * @returns {*} blob对象
  */
-function getBase64ToBlob(basestr, type) {
+export function getBase64ToBlob(basestr, type) {
   var text = window.atob(basestr.split(",")[1]);
   var buffer = new Uint8Array(text.length);
   for (var i = 0; i < text.length; i++) {

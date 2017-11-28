@@ -2,7 +2,7 @@
  * Created by lyy on 2017/9/13.
  */
 import React from 'react'
-import {WingBlank, Steps, Icon} from 'antd-mobile'
+import {WingBlank, Steps} from 'antd-mobile'
 import './subHeader.scss'
 
 

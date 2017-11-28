@@ -7,7 +7,7 @@ import { createForm } from 'rc-form'
 import moment from 'moment'
 import classnames from 'classnames'
 import './chooseInsure.scss'
-import { fetchCarInfo } from '../assets/js/service'
+// import { fetchCarInfo } from '../assets/js/service'
 
 const maxDate = moment('2016-12-03', 'YYYY-MM-DD').utcOffset(8)
 const minDate = moment('2015-08-06', 'YYYY-MM-DD').utcOffset(8)
@@ -81,10 +81,10 @@ class ChooseInsure extends React.Component {
   }
 
   submit = ()=> {
-    const { getFieldValue, getFieldsValue } = this.props.form
+    const { getFieldValue } = this.props.form
     console.log(moment(getFieldValue('forceStartDate')).format("YYYY-MM-DD"))
     console.log('a0=' + getFieldValue('a0'))
-    // console.log(getFieldValue('forceSwitch'))
+    console.log(getFieldValue('forceSwitch'))
   }
 
   showInsureInfo = (e,name )=> {

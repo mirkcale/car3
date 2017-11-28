@@ -53,11 +53,10 @@ class PhotoSwiperTest extends Component {
     const show = (index) => this.refs.preview.show(index)
     const cropper = ()=> {
       const inputFile = this.refs.cropper
-      const _self = this
       const fileReader = new FileReader()
       fileReader.onload = function (event) {
         const base64Url = this.result
-        console.log(inputFile)
+        console.log(inputFile, base64Url)
       }
       fileReader.readAsDataURL(this.refs.cropper.files[0])
     }

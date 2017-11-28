@@ -58,6 +58,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "lintFixed": "eslint --fix --ext .js,.jsx src",
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {

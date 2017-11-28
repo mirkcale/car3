@@ -2,7 +2,7 @@
  * Created by lyy on 2017/9/18.
  */
 import React from 'react'
-import { Carousel, Icon, TabBar, List, Switch, NavBar } from 'antd-mobile'
+import { Carousel, Icon, Switch } from 'antd-mobile'
 import { createForm } from 'rc-form'
 
 class HomePage extends React.Component {
@@ -13,7 +13,7 @@ class HomePage extends React.Component {
 
   render() {
     const hProp = this.state.initialHeight ? { height: this.state.initialHeight } : {}
-    const { getFieldProps, getFieldValue, setFieldsValue } = this.props.form
+    const { getFieldProps } = this.props.form
     return (
       <div className="homepage-content">
         <Carousel

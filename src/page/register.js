@@ -23,7 +23,7 @@ class Register extends React.Component {
   }
 
   render() {
-    const { getFieldProps, getFieldValue } = this.props.form
+    const { getFieldProps } = this.props.form
     const Item = List.Item
     return (
       <div className="register">
