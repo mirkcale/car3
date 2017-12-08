@@ -65,8 +65,8 @@
     height: 88px;
 }
 
-@media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
-    /* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
+/*@media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
+    !* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi *!
     .pswp--svg .pswp__button,
     .pswp--svg .pswp__button--arrow--left:before,
     .pswp--svg .pswp__button--arrow--right:before {
@@ -77,7 +77,7 @@
     .pswp--svg .pswp__button--arrow--right {
         background: none;
     }
-}
+}*/
 
 .pswp__button--close {
     background-position: 0 -88px;
